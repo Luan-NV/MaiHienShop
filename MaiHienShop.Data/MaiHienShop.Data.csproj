@@ -58,6 +58,10 @@
     <Compile Include="Migrations\201806260848121_InitialDB.Designer.cs">
       <DependentUpon>201806260848121_InitialDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807030357411_AddErrorTable.cs" />
+    <Compile Include="Migrations\201807030357411_AddErrorTable.Designer.cs">
+      <DependentUpon>201807030357411_AddErrorTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MaiHienShopDbContext.cs" />
@@ -97,6 +101,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201806260848121_InitialDB.resx">
       <DependentUpon>201806260848121_InitialDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807030357411_AddErrorTable.resx">
+      <DependentUpon>201807030357411_AddErrorTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
