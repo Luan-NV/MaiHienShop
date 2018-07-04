@@ -17,13 +17,17 @@
         {{message}}
     </div>*@
     <div ng-controller="schoolController">
-        <div ng-controller="teacherController">
+        @*<div ng-controller="teacherController">
             Teacher: {{message}}
         </div>
         <div ng-controller="studentController">
             Student: {{message}}
         </div>
-        School: {{message}}
+        School: {{message}}*@
+        <input type="number" ng-model="num" /> Value of number: {{num}}
+        <button ng-click="clickCheckNumber()">Check Number</button>
+        <br />
+        {{message}}
     </div>
 </body>
 </html>
