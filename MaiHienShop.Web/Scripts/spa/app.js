@@ -4,6 +4,7 @@ var myApp = angular.module('myModule', []);
 
 //myApp.controller("myControllerName", myControllerFunc);
 myApp.controller("schoolController", schoolController);
+myApp.directive("maihienShopDirective", maihienShopDirective);
 myApp.service('ValidatorServiceName', ValidatorServiceImpl);
 
 schoolController.$inject = ['$scope', 'ValidatorServiceName'];
@@ -47,5 +48,13 @@ function ValidatorServiceImpl($window) {
         }
         else
             return 'This is odd';
+    }
+}
+
+function maihienShopDirective() {
+    return {
+        //template: "<h1>This is my first custom directive</h1>"
+        restrict: "A",
+        templateUrl: "/Scripts/spa/maihienShopDirective.html"
     }
 }
