@@ -1,9 +1,10 @@
 ﻿using MaiHienShop.Model.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 
 namespace MaiHienShop.Data
 {
-    public class MaiHienShopDbContext : DbContext
+    public class MaiHienShopDbContext : IdentityDbContext<ApplicationUser>
     {
         public MaiHienShopDbContext() : base("MaiHienShopConnection")
         {
@@ -36,8 +37,8 @@ namespace MaiHienShop.Data
 
         protected override void OnModelCreating(DbModelBuilder builder)
         {
-            //builder.Entity<IdentityUserRole>().HasKey(i => new { i.UserId, i.RoleId});
-            //builder.Entity<IdentityUserLogin>().HasKey(i => i.UserId);
+            builder.Entity<IdentityUserRole>().HasKey(i => new { i.UserId, i.RoleId });
+            builder.Entity<IdentityUserLogin>().HasKey(i => i.UserId);
         }
     }
 }

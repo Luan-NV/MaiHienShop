@@ -1,23 +1,25 @@
-﻿using System;
-using System.Reflection;
-using System.Threading.Tasks;
-using System.Web.Http;
-using System.Web.Mvc;
-using Autofac;
+﻿using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
 using MaiHienShop.Data;
 using MaiHienShop.Data.Infrastructure;
 using MaiHienShop.Data.Repositories;
+using MaiHienShop.Model.Models;
 using MaiHienShop.Service;
+using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
+using Microsoft.Owin.Security.DataProtection;
 using Owin;
+using System.Reflection;
+using System.Web;
+using System.Web.Http;
+using System.Web.Mvc;
 
 [assembly: OwinStartup(typeof(MaiHienShop.Web.App_Start.Startup))]
 
 namespace MaiHienShop.Web.App_Start
 {
-    public class Startup
+    public partial  class Startup
     {
         public void Configuration(IAppBuilder app)
         {
@@ -36,6 +38,13 @@ namespace MaiHienShop.Web.App_Start
 
             builder.RegisterType<MaiHienShopDbContext>().AsSelf().InstancePerRequest();
 
+            //Asp.net Identity
+            builder.RegisterType<ApplicationUserStore>().As<IUserStore<ApplicationUser>>().InstancePerRequest();
+            builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
+            builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
+            builder.Register(c => HttpContext.Current.GetOwinContext().Authentication).InstancePerRequest();
+            builder.Register(c => app.GetDataProtectionProvider()).InstancePerRequest();
+
             // Repositories
             builder.RegisterAssemblyTypes(typeof(PostCategoryRepository).Assembly)
                 .Where(t => t.Name.EndsWith("Repository"))
@@ -50,7 +59,7 @@ namespace MaiHienShop.Web.App_Start
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
             //Set the WebApi DependencyResolver
-            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver((IContainer)container); 
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver((IContainer)container);
         }
     }
 }
