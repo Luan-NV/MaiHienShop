@@ -1,7 +1,7 @@
 ﻿/// <reference path="/Assets/admin/libs/angular/angular.js" />
 
 (function () {
-    angular.module('maihienshop',['maihienshop.products','maihienshop.common']).config(config);
+    angular.module('maihienshop', ['maihienshop.product_categories', 'maihienshop.products', 'maihienshop.common']).config(config);
 
     config.$inject = ['$stateProvider', '$urlRouterProvider'];
 

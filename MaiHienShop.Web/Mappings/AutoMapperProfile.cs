@@ -21,12 +21,12 @@ namespace MaiHienShop.Web.Mappings
     {
         public AutoMapperProfile()
         {
-            CreateMap<List<Post>, List<PostViewModel>>();
-            CreateMap<List<PostCategory>, List<PostCategoryViewModel>>();
-            CreateMap<List<Tag>, List<TagViewModel>>();
-            CreateMap<List<ProductCategory>, List<ProductCategoryViewModel>>();
-            CreateMap<List<Product>, List<ProductViewModel>>();
-            CreateMap<List<ProductTag>, List<ProductTagViewModel>>();
+            CreateMap<Post, PostViewModel>();
+            CreateMap<PostCategory, PostCategoryViewModel>();
+            CreateMap<Tag, TagViewModel>();
+            CreateMap<ProductCategory, ProductCategoryViewModel>();
+            CreateMap<Product, ProductViewModel>();
+            CreateMap<ProductTag, ProductTagViewModel>();
         }
     }
 }
